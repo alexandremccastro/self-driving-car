@@ -1,0 +1,11 @@
+
+# modules
+/node_modules
+/dist
+
+# Editor config
+.idea
+.vscode
+
+# Logs
+*.log
