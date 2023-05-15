@@ -16,6 +16,18 @@ export class Car {
   private FRICTION = 0.01
   private ACELLERATION = 0.03
 
+  constructor(x: number) {
+    this.x = x
+  }
+
+  public getX() {
+    return this.x
+  }
+
+  public getY() {
+    return this.y
+  }
+
   private move() {
     if (this.controls.up) {
       if (this.speed < this.MAX_SPEED) this.speed += this.ACELLERATION
@@ -48,19 +60,15 @@ export class Car {
 
     ctx.save()
 
-    ctx.fillStyle = '#000'
-
     const centerX = this.x + this.width / 2
     const centerY = this.y + this.height / 2
 
     ctx.translate(centerX, centerY)
-
-    ctx.fillStyle = '#000'
     ctx.rotate(this.angle)
-
+    ctx.fillStyle = '#212121'
     ctx.fillRect(-(this.width / 2), -(this.height / 2), this.width, this.height)
 
-    ctx.fillStyle = 'red'
+    ctx.fillStyle = '#FF3D00'
     ctx.fillRect(-5, -5, 10, 10)
 
     ctx.restore()
