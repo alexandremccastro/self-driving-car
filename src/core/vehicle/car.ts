@@ -1,4 +1,4 @@
-import { Controls } from "./controls"
+import { Controls } from './controls'
 
 export class Car {
   private controls = new Controls()
@@ -48,19 +48,19 @@ export class Car {
 
     ctx.save()
 
-    ctx.fillStyle = "#000"
+    ctx.fillStyle = '#000'
 
     const centerX = this.x + this.width / 2
     const centerY = this.y + this.height / 2
 
     ctx.translate(centerX, centerY)
 
-    ctx.fillStyle = "#000"
+    ctx.fillStyle = '#000'
     ctx.rotate(this.angle)
 
     ctx.fillRect(-(this.width / 2), -(this.height / 2), this.width, this.height)
 
-    ctx.fillStyle = "red"
+    ctx.fillStyle = 'red'
     ctx.fillRect(-5, -5, 10, 10)
 
     ctx.restore()

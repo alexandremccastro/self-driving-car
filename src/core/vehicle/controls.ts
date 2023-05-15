@@ -9,14 +9,14 @@ export class Controls {
   }
 
   private registerListeners() {
-    document.addEventListener("keydown", (e) => this.handleKeys(e.key, true))
-    document.addEventListener("keyup", (e) => this.handleKeys(e.key, false))
+    document.addEventListener('keydown', (e) => this.handleKeys(e.key, true))
+    document.addEventListener('keyup', (e) => this.handleKeys(e.key, false))
   }
 
   private handleKeys(key: string, value: boolean) {
-    if (key == "ArrowUp") this.up = value
-    if (key == "ArrowDown") this.down = value
-    if (key == "ArrowLeft") this.left = value
-    if (key == "ArrowRight") this.right = value
+    if (key == 'ArrowUp') this.up = value
+    if (key == 'ArrowDown') this.down = value
+    if (key == 'ArrowLeft') this.left = value
+    if (key == 'ArrowRight') this.right = value
   }
 }
