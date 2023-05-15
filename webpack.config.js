@@ -1,6 +1,6 @@
-const { Configuration } = require("webpack");
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { Configuration } = require("webpack")
+const path = require("path")
+const HtmlWebpackPlugin = require("html-webpack-plugin")
 
 /**
  * @type {Configuration}
@@ -8,6 +8,9 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   mode: "development",
   entry: "./src/index.ts",
+  resolve: {
+    extensions: [".ts", ".js"],
+  },
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "./dist"),
@@ -25,4 +28,4 @@ module.exports = {
   devServer: {
     port: 8000,
   },
-};
+}
