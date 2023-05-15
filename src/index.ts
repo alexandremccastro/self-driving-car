@@ -7,7 +7,5 @@ window.addEventListener('load', () => {
   canvas.width = window.innerWidth / 4
   canvas.height = window.innerHeight
 
-  const ctx = canvas.getContext('2d')
-
-  new Simulator(ctx, canvas.width, canvas.height).run()
+  new Simulator(canvas).run()
 })

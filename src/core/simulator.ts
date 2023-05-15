@@ -8,10 +8,10 @@ export default class Simulator {
 
   private car: Car
 
-  constructor(ctx: CanvasRenderingContext2D, width, height) {
-    this.ctx = ctx
-    this.width = width
-    this.height = height
+  constructor(canvas: HTMLCanvasElement) {
+    this.ctx = canvas.getContext('2d')
+    this.width = canvas.width
+    this.height = canvas.height
     this.car = new Car()
   }
 
