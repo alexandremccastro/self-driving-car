@@ -2,24 +2,68 @@ import { Controls } from "./controls"
 
 export class Car {
   private controls = new Controls()
+  private width = 40
+  private height = 80
 
-  private x = 20
-  private y = 20
+  private x = 100
+  private y = 200
+
+  private angle = 0
+
+  private speed = 0
+
+  private MAX_SPEED = 2
+  private FRICTION = 0.01
+  private ACELLERATION = 0.03
 
   private move() {
-    if (this.controls.right) this.x += 1
-    if (this.controls.left) this.x -= 1
-    if (this.controls.up) this.y -= 1
-    if (this.controls.down) this.y += 1
+    if (this.controls.up) {
+      if (this.speed < this.MAX_SPEED) this.speed += this.ACELLERATION
+    }
+
+    if (this.controls.down) {
+      if (this.speed > -this.MAX_SPEED) this.speed -= this.ACELLERATION
+    }
+
+    if (this.controls.right) this.angle += 0.02
+
+    if (this.controls.left) this.angle -= 0.02
+
+    if (this.speed > 0) {
+      this.speed -= this.FRICTION
+    } else if (this.speed < 0) {
+      this.speed += this.FRICTION
+    }
+
+    if (Math.abs(this.speed) < this.FRICTION) {
+      this.speed = 0
+    }
+
+    this.x += Math.sin(this.angle) * this.speed
+    this.y -= Math.cos(this.angle) * this.speed
   }
 
   draw(ctx: CanvasRenderingContext2D) {
     this.move()
+
     ctx.save()
+
     ctx.fillStyle = "#000"
-    ctx.beginPath()
-    ctx.fillRect(this.x, this.y, 40, 80)
-    ctx.closePath()
+
+    const centerX = this.x + this.width / 2
+    const centerY = this.y + this.height / 2
+
+    ctx.translate(centerX, centerY)
+
+    ctx.fillStyle = "#000"
+    ctx.rotate(this.angle)
+
+    ctx.fillRect(-(this.width / 2), -(this.height / 2), this.width, this.height)
+
+    ctx.fillStyle = "red"
+    ctx.fillRect(-5, -5, 10, 10)
+
     ctx.restore()
+    ctx.resetTransform()
   }
 }
